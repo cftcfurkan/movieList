@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchingMovies } from "../features/movieSlice";
+import store from "../store/store";
+
 
 const KEY = "f84fc31d";
 
@@ -6,6 +10,7 @@ export function useMovies(query) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(
     function () {
@@ -14,19 +19,8 @@ export function useMovies(query) {
         try {
           setIsLoading(true);
           setError("");
-
-          const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-            { signal: controller.signal }
-          );
-
-          if (!res.ok)
-            throw new Error("Something went wrong with fetching movies");
-
-          const data = await res.json();
-          if (data.Response === "False") throw new Error("Movie not found");
-
-          setMovies(data.Search);
+          dispatch(fetchingMovies(query));
+          setMovies(store.getState()?.movie?.movies?.Search);
           setError("");
         } catch (err) {
           if (err.name !== "AbortError") {

@@ -101,9 +101,9 @@ export default function MovieDetails({
             <p>Starring {actors}</p>
             <p>Directed by {director}</p>
           </section>
+          <DoubleLeftOutlined className="btn-back" onClick={onCloseMovie} />
         </>
       )}
-      <DoubleLeftOutlined className="btn-back" onClick={onCloseMovie} />
     </div>
   );
 }

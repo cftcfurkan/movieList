@@ -1,7 +1,6 @@
 
 
-
-https://github.com/cftcfurkan/movieList/assets/90473630/e2c9046e-e1ba-4cf1-89cb-86f8bc05ea0b
+https://github.com/cftcfurkan/movieList/assets/90473630/84835110-f46d-48e9-b8d7-fe16f952b33f
 
 
 # Movie List
